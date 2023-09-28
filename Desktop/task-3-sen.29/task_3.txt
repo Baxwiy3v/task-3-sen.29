@@ -1,0 +1,65 @@
+
+1. Ədədlərdən ibarət arrayın elementleri cemini tapan alqoritm
+
+int[] number = { 1, 4, 6, 8, 9 };
+int sum = 0;
+for (int i = 0; i < number.Length; i++)
+{
+    sum += (int)number[i];
+}
+   Console.WriteLine(sum);
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+2. Sozlerden ibaret arrayde uzunlugu 4-den boyuk olan sozleri ekrana çap edin
+
+string[] name = { "aqil", "kitab", "code", "tools" };
+for (int i = 0; i < name.Length; i++)
+{
+    if (name[i].Length>4)
+        Console.WriteLine(name[i]);
+}
+-------------------------------------------------------------------------------------------------------------------------------------------
+3. N uzunluqlu massivin elementlərini azalan sıra ilə düzün
+
+Console.WriteLine("azalan sıra ile düzülus");
+int[] num = { 2, 8,5,7,1,9 };
+
+for (int i = 0; i < num.Length; i++)
+{
+   int deyisen = i;
+    for (int p = i; p <= num.Length-1; p++)
+    {
+        if (num[p] > num[i])
+        {
+           deyisen = p;
+       }
+    }
+   int temp = num[i];
+   num[i] = num[deyisen];
+   num[deyisen] = temp;
+}
+
+for(int i = 0;i < num.Length; i++)
+{
+    Console.WriteLine(num[i]);
+}
+
+
+
+
+
+
+2ci usul------------------
+
+
+int[] numbers = { 5, 2, 9, 1, 16, 6 };
+
+
+ Array.Sort(numbers);
+      Array.Reverse(numbers);                               ƏLAVA KİMİ [KECMEMISIK]
+
+Console.WriteLine("azalan sıra ilə düzün:");
+foreach (var number in numbers)
+{
+    Console.WriteLine(number);
+}
