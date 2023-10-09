@@ -1,0 +1,114 @@
+
+1)ci usul 
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace String__StringBuilder__Array__Char__Regex
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Metini girin: ");
+            string girilenMetin = Console.ReadLine();
+
+            string duzgunMetin = DuzgunMetin(girilenMetin);
+            Console.WriteLine("Duzeldilmis Metin: " + duzgunMetin);
+            Console.ReadLine();
+
+        }
+
+        public static string DuzgunMetin(string metin)
+        {
+            char bosluk = ' ';
+            bool sozBaslangici = true;
+            string duzgunMetin = "";
+
+            for (int i = 0; i < metin.Length; i++)
+            {
+                char soz = metin[i];
+
+                if (char.IsWhiteSpace(soz))
+                {
+                    if (!sozBaslangici)
+                    {
+                        duzgunMetin += bosluk;
+                        sozBaslangici = true;
+                    }
+                }
+                else
+                {
+                    if (sozBaslangici)
+                    {
+                        duzgunMetin += char.ToUpper(soz);
+                        sozBaslangici = false;
+                    }
+                    else
+                    {
+                        duzgunMetin += char.ToLower(soz);
+                    }
+                }
+            }
+
+            return duzgunMetin.Trim();
+        }
+
+
+    }
+}
+
+
+
+//*********************************************************************************************************************************************************
+
+elave yollar
+
+
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+
+namespace String__StringBuilder__Array__Char__Regex
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+
+            Console.Write("Metini daxil edin:");
+            string daxiledilenmetn = Console.ReadLine();
+
+            string Sralanmismetn = Duzgunmetn(daxiledilenmetn);
+            Console.Write("Duzgun hala gelmis Metin:" + Sralanmismetn);
+            Console.ReadLine();
+
+        }
+
+        public static string Duzgunmetn(string metn)
+        {
+            metn= metn.ToLower();
+            metn=metn.Trim();
+
+
+            metn = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(metn);
+            metn = Regex.Replace(metn, @"\s+", " ");
+
+            return metn;
+        }
+
+
+    }
+}
+
+//***************************************************************************************************************************************************
